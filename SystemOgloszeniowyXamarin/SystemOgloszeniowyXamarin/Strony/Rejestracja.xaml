@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOgloszeniowyXamarin.Strony.Rejestracja">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame CornerRadius="5" Margin="0" WidthRequest="380" HeightRequest="290" BorderColor="#222222" HorizontalOptions="Center" Padding="25" BackgroundColor="Gray" HasShadow="True">
+                <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Użytkownik:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" Margin="25,15,0,0" />
+                    <Entry x:Name="UsernameEntry" FontSize="16" HorizontalOptions="Start" VerticalOptions="Start" Margin="110,20,20,0" HeightRequest="25" WidthRequest="200" />
+
+                    <Label Text="Hasło:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" Margin="25,55,0,0" />
+                    <Entry x:Name="PasswordEntry" FontSize="16" HorizontalOptions="Start" VerticalOptions="Start" Margin="110,60,20,0" HeightRequest="25" WidthRequest="200" IsPassword="true" />
+
+                    <Label Text="Email:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" Margin="25,95,0,0" />
+                    <Entry x:Name="EmailEntry" FontSize="16" HorizontalOptions="Start" VerticalOptions="Start" Margin="110,100,20,0" HeightRequest="25" WidthRequest="200" />
+
+                    <Button x:Name="RegisterButton" Text="Zarejestruj" HorizontalOptions="Center" CornerRadius="35" BackgroundColor="#222222" TextColor="White" FontSize="16" VerticalOptions="Start" Margin="0,135,0,0" WidthRequest="100" Clicked="RegisterButton_Clicked"/>
+
+                    <Button Text="Logowanie" Clicked="ZalogujSie_Clicked" HorizontalOptions="Center" CornerRadius="35" BackgroundColor="#222222" TextColor="White" FontSize="16" VerticalOptions="Start" Margin="0,170,0,0" WidthRequest="100"/>
+
+                    <Button Text="Strona główna" Clicked="StronaGlowna_Clicked" HorizontalOptions="Center" CornerRadius="35" BackgroundColor="#222222" TextColor="White" FontSize="16" VerticalOptions="Start" Margin="0,205,0,0" WidthRequest="100"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
