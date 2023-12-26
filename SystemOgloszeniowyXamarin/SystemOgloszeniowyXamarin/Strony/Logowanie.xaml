@@ -1,20 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SystemOgloszeniowyXamarin.Strony.Logowanie" BackgroundColor="Gray">
+             x:Class="SystemOgloszeniowyXamarin.Strony.Logowanie" NavigationPage.HasNavigationBar="False">
 
-   
-    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Label Text="Użytkownik:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start"/>
-        <Entry x:Name="UsernameEntry" FontSize="16" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200"/>
 
-        <Label Text="Hasło:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,20,0,0"/>
-        <Entry x:Name="PasswordEntry" FontSize="16" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" IsPassword="True"/>
+    <ScrollView>
+        <Frame Margin="10,20,10,0" CornerRadius="15" Padding="70" BackgroundColor="Gray" HasShadow="True" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <StackLayout>
+                <Label Text="Użytkownik:" FontSize="20" HorizontalOptions="Start" VerticalOptions="Start"/>
+                <Entry x:Name="UsernameEntry"  TextColor="#222222" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200"/>
 
-        <Button x:Name="LoginButton" Text="Zaloguj" CornerRadius="35" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="100" Clicked="LoginButton_Clicked" />
+                <Label Text="Hasło:" FontSize="20" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,20,0,0"/>
+                <Entry x:Name="PasswordEntry"  TextColor="#222222"  HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" IsPassword="True"/>
 
-        <Button Text="Rejestracja" Clicked="Rejestracja_Clicked" CornerRadius="35" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="100"/>
+                <Button x:Name="LoginButton" Text="Zaloguj" CornerRadius="35" BorderColor="White" TextTransform="None" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="150" Clicked="LoginButton_Clicked" />
 
-        <Button Text="Strona główna" Clicked="StronaGlowna_Clicked"  CornerRadius="35" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="100"/>
-    </StackLayout>
+                <Button Text="Rejestracja" Clicked="Rejestracja" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="150"/>
+
+                <Button Text="Strona główna" Clicked="StronaGlowna"  CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="150"/>
+            </StackLayout>
+        </Frame>
+    </ScrollView>
+
 </ContentPage>

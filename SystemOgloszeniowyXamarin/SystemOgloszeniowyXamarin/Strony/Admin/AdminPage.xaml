@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.AdminPage" NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <StackLayout Margin="0,60,0,0">
+            <Label Text="Panel admina" HorizontalOptions="CenterAndExpand" FontSize="45" TextColor="Black" Margin="0,0,0,0"/>
+            <Frame CornerRadius="15" HeightRequest="320" Margin="0,0,0,160" BackgroundColor="Gray" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="80"  BorderColor="#222222" HasShadow="True">
+                <StackLayout>
+                    <Button Text="Strona główna" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="200" Margin="0,10,0,10" Clicked="StronaGlowna"/>
+                    <Button Text="Zarządzaj kategoriami" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="200"  Clicked="ZarzadzajKategoriami"/>
+                    <Button Text="Zarządzaj firmami" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="200" Margin="0,10,0,0" Clicked="ZarzadzajFirmami"/>
+                    <Button Text="Zarządzaj ogłoszeniami" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="200" Margin="0,10,0,0" Clicked="ZarzadzajOgloszeniami"/>
+                    <Button Text="Zarządzaj adminem" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="200" Margin="0,10,0,0" Clicked="giveAdmin"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

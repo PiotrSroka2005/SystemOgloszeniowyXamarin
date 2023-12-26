@@ -6,15 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using SystemOgloszeniowyXamarin.Klasy;
 using SystemOgloszeniowyXamarin.Strony;
+using SystemOgloszeniowyXamarin.Strony.Admin;
 using Xamarin.Forms;
 
 namespace SystemOgloszeniowyXamarin
 {
     public partial class MainPage : ContentPage
-    {
-
+    {     
         private List<Kategoria> kategorie;
-        private bool isPanelExpanded = false;
         private int admin = 0;
         private bool logged = false;
         private string usermn = "";
@@ -26,107 +25,73 @@ namespace SystemOgloszeniowyXamarin
 
             Menu.IsVisible = false;
 
-           
-            Baza.TabelaUzytkownikow();
-            Baza.TabelaOgloszenia();
+
+            App.Baza.UtworzUzytkownikow();
+            App.Baza.UtworzTabeleOgloszenia();
 
             uzytkownik.IsVisible = false;
             LiniaUser.IsVisible = false;
-            //PanelAdm.Visibility = Visibility.Collapsed;
-            //Wyl.Visibility = Visibility.Collapsed;
-            //profil.Visibility = Visibility.Collapsed;
+            PanelAdm.IsVisible = false;
+            Wyl.IsVisible = false;
+            profil.IsVisible = false;
 
-            //MainViewModel viewModel = new MainViewModel();
-            //DataContext = viewModel;
-
-            //kategorie = Baza.CzytajKategorie();
-
-            //Kategoria specjalnaKategoria = new Kategoria { KategoriaId = 0, KategoriaNazwa = "Wybierz kategorie:" };
-            //kategorie.Insert(0, specjalnaKategoria);
-
-            //KategoriaComboBox.ItemsSource = kategorie;
-
-            //// Wczytaj ogłoszenia
-            //viewModel.Ogloszenia = Baza.CzytajWszystkieOgloszenia();
-
-
+            kategorie = App.Baza.CzytajKategorie();
+            KategoriaPicker.ItemsSource = kategorie;
+            
         }
 
         public MainPage(int adm, bool log, string user)
         {
             InitializeComponent();
-           
 
-            Baza.UtworzTabeleAplikacji();
-            Baza.UtworzTabeleAplikacji();
-            //PanelAdm.Visibility = Visibility.Collapsed;
-            //usermn = user;
-            //admin = adm;
-            //logged = log;
+            Menu.IsVisible = false;
+
+            App.Baza.UtworzTabeleAplikacje();            
+            PanelAdm.IsVisible = false;
+            usermn = user;
+            admin = adm;
+            logged = log;
 
 
-            //if (logged == false)
-            //{
-            //    Wyl.Visibility = Visibility.Collapsed;
-            //    uzytkownik.Visibility = Visibility.Collapsed;
-            //    profil.Visibility = Visibility.Collapsed;
-            //}
-            //else
-            //{
-            //    uzytkownik.Header = user;
-            //    Zal.Visibility = Visibility.Collapsed;
-            //    if (admin == 1)
-            //    {
-            //        PanelAdm.Visibility = Visibility.Visible;
-            //    }
-            //    else
-            //    {
-            //        PanelAdm.Visibility = Visibility.Collapsed;
-            //    }
-            //}
+            if (logged == false)
+            {
+                Wyl.IsVisible = false;
+                uzytkownik.IsVisible = false;
+                LiniaUser.IsVisible = false;
+                profil.IsVisible = false;
+            }
+            else
+            {
+                uzytkownik.Text = user;
+                LiniaUser.IsVisible = true;
+                Zal.IsVisible = false;
+                if (admin == 1)
+                {
+                    PanelAdm.IsVisible = true;
+                }
+                else
+                {
+                    PanelAdm.IsVisible = false;
+                }
+            }
 
-            Baza.TabelaUzytkownikow();
-            Baza.TabelaOgloszenia();
+            App.Baza.UtworzUzytkownikow();
+            App.Baza.UtworzTabeleOgloszenia();
 
-            kategorie = Baza.CzytajKategorie();
+            kategorie = App.Baza.CzytajKategorie();
             KategoriaPicker.ItemsSource = kategorie;
-            //Kategoria specjalnaKategoria = new Kategoria { KategoriaId = 0, KategoriaNazwa = "Wybierz kategorie:" };
-            //kategorie.Insert(0, specjalnaKategoria);
-
-            //KategoriaComboBox.ItemsSource = kategorie;
-
-            //MainViewModel viewModel = new MainViewModel();
-            //DataContext = viewModel;
-
-            //// Wczytaj ogłoszenia
-            //viewModel.Ogloszenia = Baza.CzytajWszystkieOgloszenia();
+            
         }
 
         private void Menu_Clicked(object sender, EventArgs e)
-        {
-            //if(Menu.IsVisible == false)
-            //{
-            //    Menu.ScaleY = 0;
-            //    Menu.ScaleYTo(1, 1000, Easing.SinInOut);
-
-            //    Menu.IsVisible = true;
-            //}
-            //else
-            //{
-            //    Menu.ScaleYTo(0, 1000, Easing.SinInOut);
-            //    Menu.IsVisible = false;
-            //}
-
+        {          
             if (Menu.IsVisible == false)
             {                
-                Menu.IsVisible = true;
-                Menu.ScaleY = 0;
-                Menu.ScaleYTo(1, 5000, Easing.SinInOut);
+                Menu.IsVisible = true;               
             } 
             else 
             {
                 Menu.IsVisible = false;
-                Menu.ScaleYTo(0, 5000, Easing.SinInOut);
             }
         }
 
@@ -141,6 +106,17 @@ namespace SystemOgloszeniowyXamarin
 
         private void ZalogujSie_Click(object sender, EventArgs e)
         {
+
+            string adminUsername = "Delviner";
+            string adminPassword = "Admin1234";
+            string adminEmail = "delviner@interia.pl";
+
+            if (!App.Baza.CzyIstniejeUzytkownik(adminUsername))
+            {
+                Uzytkownik adminUser = new Uzytkownik(adminUsername, adminPassword, adminEmail, true);
+                App.Baza.DodajLubAktualizujUzytkownika(adminUser);
+            }
+
             Navigation.PushAsync(new Logowanie());
         }
 
@@ -151,9 +127,7 @@ namespace SystemOgloszeniowyXamarin
 
         private void PanelAdmina_Click(object sender, EventArgs e)
         {
-            //AdminWindow d = new AdminWindow(admin, logged, usermn);
-            //d.Show();
-            //this.Close();
+            Navigation.PushAsync(new AdminPage(admin,logged, usermn));
         }
      
         private void Szczegoly_Click(object sender, EventArgs e)

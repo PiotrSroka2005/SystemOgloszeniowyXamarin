@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,7 @@ namespace SystemOgloszeniowyXamarin.Klasy
 {
     public class Profil
     {
+        [PrimaryKey, AutoIncrement]
         public int ProfilId { get; set; }
 
         public int UzytkownikId { get; set; }

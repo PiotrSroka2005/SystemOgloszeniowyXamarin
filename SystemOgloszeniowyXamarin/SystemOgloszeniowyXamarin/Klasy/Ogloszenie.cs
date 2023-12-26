@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +7,8 @@ namespace SystemOgloszeniowyXamarin.Klasy
 {
     public class Ogloszenie
     {
+
+        [PrimaryKey, AutoIncrement]
         public int OgloszenieId { get; set; }
 
         public string Tytul { get; set; }
@@ -81,27 +83,9 @@ namespace SystemOgloszeniowyXamarin.Klasy
 
             string dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "systemOgloszeniowy.db");
 
-            using (var db = new SqliteConnection($"Filename={dbPath}"))
+            using (var db = new SQLiteConnection($"Filename={dbPath}"))
             {
-                db.Open();
-
-                string selectCommand = "SELECT * FROM firmy WHERE firma_id = @FirmaId";
-                using (var selectStatement = new SqliteCommand(selectCommand, db))
-                {
-                    selectStatement.Parameters.AddWithValue("@FirmaId", firmaId);
-
-                    using (var reader = selectStatement.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            firma = new Firma
-                            {
-                                FirmaId = reader.GetInt32(0),
-                                FirmaNazwa = reader.GetString(1)
-                            };
-                        }
-                    }
-                }
+                firma = db.Table<Firma>().FirstOrDefault(f => f.FirmaId == firmaId);
             }
 
             return firma;

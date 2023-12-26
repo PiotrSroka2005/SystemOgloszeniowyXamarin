@@ -1,10 +1,10 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SystemOgloszeniowyXamarin.Klasy;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,7 +23,7 @@ namespace SystemOgloszeniowyXamarin.Strony
             Navigation.PushAsync(new Rejestracja());
         }
 
-        private void LoginButton_Click(object sender, EventArgs e)
+        private void LoginButton_Clicked(object sender, EventArgs e)
         {
             string username = UsernameEntry.Text;
             string password = PasswordEntry.Text;
@@ -35,15 +35,15 @@ namespace SystemOgloszeniowyXamarin.Strony
             }
 
 
-            if (IsUsernameExistsInDatabase(username) == true)
+            if (App.Baza.IsUsernameExistsInDatabase(username) == true)
             {
-                if (IsPasswordCorrect(password) == true)
+                if (App.Baza.IsPasswordCorrect(password) == true)
                 {
                     var log = true;
                     var adm = 0;
                     string user = username;
 
-                    if (IsAdmin(username) == true)
+                    if (App.Baza.IsAdmin(username) == true)
                     {
 
                         adm = 1;
@@ -66,68 +66,6 @@ namespace SystemOgloszeniowyXamarin.Strony
             }
 
         }
-
-
-
-        private bool IsUsernameExistsInDatabase(string username)
-        {
-            string dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "systemOgloszeniowy.db");
-            using (var db = new SqliteConnection($"Filename={dbPath}"))
-            {
-                db.Open();
-
-                var selectCommand = new SqliteCommand();
-                selectCommand.Connection = db;
-                selectCommand.CommandText = "SELECT COUNT() FROM uzytkownicy WHERE nick = @Username;";
-                selectCommand.Parameters.AddWithValue("@Username", username);
-
-                int count = Convert.ToInt32(selectCommand.ExecuteScalar());
-
-                return count > 0;
-            }
-        }
-
-
-        private bool IsPasswordCorrect(string password)
-        {
-            string dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "systemOgloszeniowy.db");
-            using (var db = new SqliteConnection($"Filename={dbPath}"))
-            {
-                db.Open();
-
-                var selectCommand = new SqliteCommand();
-                selectCommand.Connection = db;
-                selectCommand.CommandText = "SELECT COUNT() FROM uzytkownicy WHERE haslo = @Password;";
-                selectCommand.Parameters.AddWithValue("@Password", password);
-
-                int count = Convert.ToInt32(selectCommand.ExecuteScalar());
-
-                return count > 0;
-            }
-        }
-
-
-        private bool IsAdmin(string username)
-        {
-            string dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "systemOgloszeniowy.db");
-            using (var db = new SqliteConnection($"Filename={dbPath}"))
-            {
-                db.Open();
-
-
-                var selectCommand = new SqliteCommand();
-                selectCommand.Connection = db;
-                selectCommand.CommandText = "SELECT administrator FROM uzytkownicy WHERE Nick=@Nick";
-                selectCommand.Parameters.AddWithValue("@Nick", username);
-
-
-
-                int admin = Convert.ToInt32(selectCommand.ExecuteScalar());
-
-                return admin > 0;
-            }
-        }
-
 
         private void StronaGlowna(object sender, EventArgs e)
         {

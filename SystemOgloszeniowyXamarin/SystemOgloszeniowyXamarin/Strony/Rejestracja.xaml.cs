@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,103 +13,62 @@ namespace SystemOgloszeniowyXamarin.Strony
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Rejestracja : ContentPage
-	{
-		public Rejestracja ()
+	{        
+        public Rejestracja ()
 		{
 			InitializeComponent ();
 		}
 
-        private void RegisterButton_Click(object sender, EventArgs e)
+        private void RegisterButton_Clicked(object sender, EventArgs e)
         {
-            string username = UsernameEntry.Text;
-            string password = PasswordEntry.Text;
-            string email = EmailEntry.Text;
-            bool administrator = false;
+                string username = UsernameEntry.Text;
+                string password = PasswordEntry.Text;
+                string email = EmailEntry.Text;
+                bool administrator = false;
 
-            Uzytkownik uzytkownik = new Uzytkownik(username, password, email, administrator);
-            string patter = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+                Uzytkownik uzytkownik = new Uzytkownik(username, password, email, administrator);
+                string patter = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                DisplayAlert("Wprowadź login i hasło.", "Registration Error", "OK");
-                return;
-            }
-
-            if (Regex.IsMatch(email, patter) == true)
-            {
-                if (CzyIstniejeEmail(email) == true)
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 {
-                    DisplayAlert("Taki email już istnieje. Jeśli masz już konto proszę się zalogować", "Registration Error", "OK");
+                    DisplayAlert("Wprowadź login i hasło.", "Registration Error", "OK");
+                    return;
                 }
-                else
+
+                if (Regex.IsMatch(email, patter) == true)
                 {
-                    if (CzyIstniejeUzytkownik(username) == true)
+                    if (App.Baza.CzyIstniejeEmail(email) == true)
                     {
-                        DisplayAlert("Taki użytkownik już istnieje", "Registration Error", "OK");
+                        DisplayAlert("Taki email już istnieje. Jeśli masz już konto proszę się zalogować", "Registration Error", "OK");
                     }
                     else
                     {
-                        Baza.UtworzUzytkownika(uzytkownik);
+                        if (App.Baza.CzyIstniejeUzytkownik(username) == true)
+                        {
+                            DisplayAlert("Taki użytkownik już istnieje", "Registration Error", "OK");
+                        }
+                        else
+                        {
+                            App.Baza.DodajLubAktualizujUzytkownika(uzytkownik);
 
-                        DisplayAlert("Rejestreacja przebiegła pomyślnie.", "Registration", "OK");
+                            DisplayAlert("Rejestreacja przebiegła pomyślnie.", "Registration", "OK");
 
-                        UsernameEntry.Text = string.Empty;
-                        PasswordEntry.Text = string.Empty;
-                        EmailEntry.Text = string.Empty;
+                            UsernameEntry.Text = string.Empty;
+                            PasswordEntry.Text = string.Empty;
+                            EmailEntry.Text = string.Empty;
 
-                        Navigation.PushAsync(new Logowanie());
+                            Navigation.PushAsync(new Logowanie());
 
+                        }
                     }
                 }
-            }
-            else
-            {
-                DisplayAlert("Proszę podać poprawny email", "Registration Error", "OK");
-            }
+                else
+                {
+                    DisplayAlert("Proszę podać poprawny email", "Registration Error", "OK");
+                }                        
         }
 
-
-        private bool CzyIstniejeEmail(string email)
-        {
-
-            string dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "systemOgloszeniowy.db");
-            using (var db = new SqliteConnection($"Filename={dbPath}"))
-            {
-                db.Open();
-
-
-                var selectCommand = new SqliteCommand();
-                selectCommand.Connection = db;
-                selectCommand.CommandText = "SELECT COUNT() FROM uzytkownicy WHERE email = @Email;";
-                selectCommand.Parameters.AddWithValue("@Email", email);
-
-                int count = Convert.ToInt32(selectCommand.ExecuteScalar());
-
-                return count > 0;
-            }
-        }
-
-        private bool CzyIstniejeUzytkownik(string username)
-        {
-
-            string dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "systemOgloszeniowy.db");
-            using (var db = new SqliteConnection($"Filename={dbPath}"))
-            {
-                db.Open();
-
-
-                var selectCommand = new SqliteCommand();
-                selectCommand.Connection = db;
-                selectCommand.CommandText = "SELECT COUNT() FROM uzytkownicy WHERE nick = @Username;";
-                selectCommand.Parameters.AddWithValue("@Username", username);
-
-                int count = Convert.ToInt32(selectCommand.ExecuteScalar());
-
-                return count > 0;
-            }
-        }
-
-        private void ZalogujSie_Click(object sender, EventArgs e)
+        private void ZalogujSie_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new Logowanie());
         }
