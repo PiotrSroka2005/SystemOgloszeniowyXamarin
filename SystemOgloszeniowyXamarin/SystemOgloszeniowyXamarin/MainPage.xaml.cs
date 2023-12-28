@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace SystemOgloszeniowyXamarin
     public partial class MainPage : ContentPage
     {     
         private List<Kategoria> kategorie;
+        private ObservableCollection<Ogloszenie> ogloszenia;
         private int admin = 0;
         private bool logged = false;
         private string usermn = "";
@@ -25,19 +27,32 @@ namespace SystemOgloszeniowyXamarin
 
             Menu.IsVisible = false;
 
-
+            App.Baza.UtworzTabeleFirmy();
             App.Baza.UtworzUzytkownikow();
             App.Baza.UtworzTabeleOgloszenia();
 
+            ogloszenia = new ObservableCollection<Ogloszenie>(App.Baza.CzytajWszystkieOgloszenia());
+            ListaOgloszenia.ItemsSource = ogloszenia;
+            ListaOgloszenia.BindingContext = ogloszenia;
+
+
             uzytkownik.IsVisible = false;
             LiniaUser.IsVisible = false;
+            LogowanieLinia.IsVisible = false;
             PanelAdm.IsVisible = false;
             Wyl.IsVisible = false;
             profil.IsVisible = false;
 
             kategorie = App.Baza.CzytajKategorie();
             KategoriaPicker.ItemsSource = kategorie;
-            
+
+            Kategoria specjalnaKategoria = new Kategoria { KategoriaId = 0, KategoriaNazwa = "Wybierz kategorie:" };
+            kategorie.Insert(0, specjalnaKategoria);
+
+            KategoriaPicker.Title = "Wybierz kategorię";
+            KategoriaPicker.ItemDisplayBinding = new Binding("KategoriaNazwa");
+           
+
         }
 
         public MainPage(int adm, bool log, string user)
@@ -46,24 +61,31 @@ namespace SystemOgloszeniowyXamarin
 
             Menu.IsVisible = false;
 
+            App.Baza.UtworzUzytkownikow();
+            App.Baza.UtworzTabeleOgloszenia();
             App.Baza.UtworzTabeleAplikacje();            
             PanelAdm.IsVisible = false;
             usermn = user;
             admin = adm;
             logged = log;
 
+            ogloszenia = new ObservableCollection<Ogloszenie>(App.Baza.CzytajWszystkieOgloszenia());
+            ListaOgloszenia.ItemsSource = ogloszenia;
+           
 
             if (logged == false)
             {
                 Wyl.IsVisible = false;
                 uzytkownik.IsVisible = false;
                 LiniaUser.IsVisible = false;
+                LogowanieLinia.IsVisible = false;
                 profil.IsVisible = false;
             }
             else
             {
                 uzytkownik.Text = user;
                 LiniaUser.IsVisible = true;
+                LogowanieLinia.IsVisible=true;
                 Zal.IsVisible = false;
                 if (admin == 1)
                 {
@@ -74,13 +96,17 @@ namespace SystemOgloszeniowyXamarin
                     PanelAdm.IsVisible = false;
                 }
             }
-
-            App.Baza.UtworzUzytkownikow();
-            App.Baza.UtworzTabeleOgloszenia();
-
+           
             kategorie = App.Baza.CzytajKategorie();
             KategoriaPicker.ItemsSource = kategorie;
-            
+
+            Kategoria specjalnaKategoria = new Kategoria { KategoriaId = 0, KategoriaNazwa = "Wybierz kategorie:" };
+            kategorie.Insert(0, specjalnaKategoria);
+
+            KategoriaPicker.Title = "Wybierz kategorię";
+            KategoriaPicker.ItemDisplayBinding = new Binding("KategoriaNazwa");
+
+          
         }
 
         private void Menu_Clicked(object sender, EventArgs e)
@@ -99,9 +125,7 @@ namespace SystemOgloszeniowyXamarin
 
         private void Profil_Click(object sender, EventArgs e)
         {
-            //ProfilWindow p = new ProfilWindow(admin, logged, usermn);
-            //p.Show();
-            //this.Close();
+            Navigation.PushAsync(new ProfilPage(admin, logged, usermn));
         }
 
         private void ZalogujSie_Click(object sender, EventArgs e)
@@ -130,23 +154,17 @@ namespace SystemOgloszeniowyXamarin
             Navigation.PushAsync(new AdminPage(admin,logged, usermn));
         }
      
+       
         private void Szczegoly_Click(object sender, EventArgs e)
         {
-            //Button button = sender as Button;
+            var frame = sender as Frame;
+         
+            if (frame != null && frame.BindingContext is Ogloszenie ogloszenie)
+            {
+                int idOgloszenia = ogloszenie.OgloszenieId;
 
-
-            //Ogloszenie ogloszenie = button?.DataContext as Ogloszenie;
-
-
-            //if (ogloszenie != null)
-            //{
-            //    int idOgloszenia = ogloszenie.OgloszenieId;
-
-
-            //    SzczegolyOgloszenia szczegolyWindow = new SzczegolyOgloszenia(admin, logged, usermn, idOgloszenia);
-            //    szczegolyWindow.Show();
-            //    this.Close();
-            //}
+                Navigation.PushAsync(new SzczegolyOgloszenia(admin, logged, usermn, idOgloszenia));
+            }
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
@@ -158,33 +176,28 @@ namespace SystemOgloszeniowyXamarin
         {
             string Szukana = searchBar.Text;
 
-            //if (KategoriaComboBox.SelectedIndex != -1 && KategoriaComboBox.SelectedIndex != 0)
-            //{
-            //    var zaznaczonaKategoria = KategoriaComboBox.SelectedItem as Kategoria;
-            //    if (zaznaczonaKategoria != null)
-            //    {
-            //        int zaznaczonaKategoriaId = zaznaczonaKategoria.KategoriaId;
-            //        if (searchBar.Text == "")
-            //        {
-            //            WyszukaneOgloszenia w = new WyszukaneOgloszenia(admin, logged, usermn, zaznaczonaKategoriaId);
-            //            w.Show();
-            //            this.Close();
-            //        }
-            //        else
-            //        {
-            //            WyszukaneOgloszenia w = new WyszukaneOgloszenia(admin, logged, usermn, Szukana, zaznaczonaKategoriaId);
-            //            w.Show();
-            //            this.Close();
-            //        }
+            if(KategoriaPicker.SelectedIndex != -1 && KategoriaPicker.SelectedIndex != 0)
+            {
+                var zaznaczonaKategoria = KategoriaPicker.SelectedItem as Kategoria;
+                if (zaznaczonaKategoria != null)
+                {
+                    int zaznaczonaKategoriaId = zaznaczonaKategoria.KategoriaId;
+                    if (searchBar.Text == "")
+                    {
+                       Navigation.PushAsync(new WyszukaneOgloszenia(admin, logged, usermn, zaznaczonaKategoriaId));
 
-            //    }
-            //}
-            //else
-            //{
-            //    WyszukaneOgloszenia z = new WyszukaneOgloszenia(admin, logged, usermn, Szukana);
-            //    z.Show();
-            //    this.Close();
-            //}
+                    }
+                    else
+                    {
+                        Navigation.PushAsync(new WyszukaneOgloszenia(admin, logged, usermn, Szukana, zaznaczonaKategoriaId));
+                    }
+
+                }
+            }
+            else
+            {
+                Navigation.PushAsync(new WyszukaneOgloszenia(admin, logged, usermn, Szukana));
+            }
         }
 
         private void Button_Clicked(object sender, EventArgs e)

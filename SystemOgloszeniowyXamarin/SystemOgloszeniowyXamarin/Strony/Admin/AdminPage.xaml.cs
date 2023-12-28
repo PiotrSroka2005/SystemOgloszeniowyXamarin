@@ -33,22 +33,22 @@ namespace SystemOgloszeniowyXamarin.Strony.Admin
 
         private void ZarzadzajKategoriami(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage(admin, logged, usermn));
+            Navigation.PushAsync(new ZarzadzanieKategoria(admin, logged, usermn));
         }
 
         private void ZarzadzajFirmami(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage(admin, logged, usermn));
+            Navigation.PushAsync(new ZarzadzanieFirma(admin, logged, usermn));
         }
 
         private void ZarzadzajOgloszeniami(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage(admin, logged, usermn));
+            Navigation.PushAsync(new ZarzadzanieOgloszeniami(admin, logged, usermn));
         }
 
         private void giveAdmin(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage(admin, logged, usermn));
+            Navigation.PushAsync(new ZarzadzanieAdminem(admin, logged, usermn));
         }
     }
 }

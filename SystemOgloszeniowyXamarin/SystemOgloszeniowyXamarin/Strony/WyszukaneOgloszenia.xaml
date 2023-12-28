@@ -1,30 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SystemOgloszeniowyXamarin.MainPage" NavigationPage.HasNavigationBar="False">
+             x:Class="SystemOgloszeniowyXamarin.Strony.WyszukaneOgloszenia" NavigationPage.HasNavigationBar="False">
 
-        <Grid RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
 
-            <StackLayout x:Name="MenuNavBar" Background="#222222" VerticalOptions="StartAndExpand" Orientation="Horizontal" Grid.Row="0">
-                <Image  Source="logoMoonWork.png" HorizontalOptions="CenterAndExpand" HeightRequest="50"  VerticalOptions="Center"/>
-                <Label  Text="MoonWork" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                <ImageButton Source="hamburger.png" HeightRequest="45" CornerRadius="10" WidthRequest="45" Margin="5" Padding="5" VerticalOptions="Center" Clicked="Menu_Clicked" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
-           
-            <StackLayout x:Name="Content" Grid.Row="1">
+        <StackLayout x:Name="MenuNavBar" Background="#222222" VerticalOptions="StartAndExpand" Orientation="Horizontal" Grid.Row="0">
+            <ImageButton  BackgroundColor="Transparent" Source="logoMoonWork.png" Clicked="StronaGlowna_Clicked" HorizontalOptions="CenterAndExpand" HeightRequest="50"  VerticalOptions="Center"/>
+            <Label  Text="MoonWork" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            <ImageButton Source="hamburger.png" HeightRequest="45" CornerRadius="10" WidthRequest="45" Margin="5" Padding="5" VerticalOptions="Center" Clicked="Menu_Clicked" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <StackLayout x:Name="Content" Grid.Row="1">
             <ScrollView>
                 <StackLayout>
-                    <StackLayout  Orientation="Horizontal" Margin="0,20,0,0" HorizontalOptions="Center">
-                        <Label Text="67 542" FontSize="25" TextColor="#222222"/>
-                        <Label Text="Sprawdzone oferty pracy" TextColor="#222222" FontSize="25"/>
-                    </StackLayout>
-                    <Label Text="od najlepszych pracodawców" TextColor="#222222" FontSize="20" HorizontalOptions="Center"/>
-
                     <Frame Margin="10,20,10,0" CornerRadius="15" Padding="10" BackgroundColor="Gray" HasShadow="True">
                         <StackLayout>
 
@@ -36,7 +30,7 @@
                         </StackLayout>
                     </Frame>
 
-                    <Label Text="Najnowsze oferty" TextColor="#222222" HorizontalOptions="Center" Margin="0,20,0,0" FontSize="25"/>
+                    <Label Text="Wyszukane oferty" TextColor="#222222" HorizontalOptions="Center" Margin="0,20,0,0" FontSize="25"/>
 
                     <ListView x:Name="ListaOgloszenia" HasUnevenRows="True" Margin="0,0,0,0">
                         <ListView.ItemTemplate>
@@ -68,17 +62,18 @@
 
                 </StackLayout>
             </ScrollView>
-        </StackLayout>   
+        </StackLayout>
 
-            <StackLayout x:Name="Menu" Grid.Row="1" BackgroundColor="#222222">
-                <Line BackgroundColor="White" HeightRequest="0.5"/>
-                <Label x:Name="uzytkownik" Text="Użytkownik" TextColor="White" Margin="15,10,0,10"/>
-                <Line x:Name="LiniaUser" BackgroundColor="White" HeightRequest="0.5"/>
-                <Button x:Name="profil" Text="Profil" Margin="-10,0,0,0" TextTransform="None" Clicked="Profil_Click" HorizontalOptions="StartAndExpand" Background="Transparent" TextColor="White"/>
-                <Button x:Name="PanelAdm" Text="Panel admina" TextTransform="None" Clicked="PanelAdmina_Click" HorizontalOptions="StartAndExpand"  Background="Transparent" TextColor="White"/>
-                <Line x:Name="LogowanieLinia" BackgroundColor="White" HeightRequest="0.5"/>
-                <Button x:Name="Zal" Text="Zaloguj się" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="ZalogujSie_Click" Background="Transparent" TextColor="White" />
-                <Button x:Name="Wyl" Text="Wyloguj się" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="WylogujSie_Click" Background="Transparent" TextColor="White" />
-            </StackLayout>
-        </Grid>
+        <StackLayout x:Name="Menu" Grid.Row="1" BackgroundColor="#222222">
+            <Line BackgroundColor="White" HeightRequest="0.5"/>
+            <Label x:Name="uzytkownik" Text="Użytkownik" TextColor="White" Margin="15,10,0,10"/>
+            <Line x:Name="LiniaUser" BackgroundColor="White" HeightRequest="0.5"/>
+            <Button Text="Strona główna" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="StronaGlowna_Clicked" Background="Transparent" TextColor="White"/>
+            <Button x:Name="profil" Text="Profil" Margin="-10,0,0,0" Clicked="Profil_Click" TextTransform="None" HorizontalOptions="StartAndExpand" Background="Transparent" TextColor="White"/>
+            <Button x:Name="PanelAdm" Text="Panel admina" TextTransform="None" Clicked="PanelAdmina_Click" HorizontalOptions="StartAndExpand"  Background="Transparent" TextColor="White"/>
+            <Line BackgroundColor="White" HeightRequest="0.5"/>
+            <Button x:Name="Zal" Text="Zaloguj się" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="ZalogujSie_Click" Background="Transparent" TextColor="White" />
+            <Button x:Name="Wyl" Text="Wyloguj się" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="WylogujSie_Click" Background="Transparent" TextColor="White" />
+        </StackLayout>
+    </Grid>
 </ContentPage>

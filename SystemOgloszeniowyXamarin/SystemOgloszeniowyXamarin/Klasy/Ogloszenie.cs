@@ -76,24 +76,11 @@ namespace SystemOgloszeniowyXamarin.Klasy
             Zdjecie = zdjecie;
             AktualizujNazweFirmy();
         }
-
-        public Firma PobierzDaneOFirmie(int firmaId)
-        {
-            Firma firma = null;
-
-            string dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "systemOgloszeniowy.db");
-
-            using (var db = new SQLiteConnection($"Filename={dbPath}"))
-            {
-                firma = db.Table<Firma>().FirstOrDefault(f => f.FirmaId == firmaId);
-            }
-
-            return firma;
-        }
+     
 
         public void AktualizujNazweFirmy()
         {
-            var firma = PobierzDaneOFirmie(FirmaId);
+            var firma = App.Baza.PobierzDaneOFirmie(FirmaId);
             NazwaFirmy = firma != null ? firma.FirmaNazwa : string.Empty;
         }
 

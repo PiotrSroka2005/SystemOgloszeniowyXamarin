@@ -17,7 +17,7 @@ namespace SystemOgloszeniowyXamarin
             {
                 if (baza == null)
                 {
-                    baza = new Baza(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "systemOgloszeniowy.db3"));
+                    baza = new Baza(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "systemOgloszeniowy2.db3"));
                 }
                 return baza;
             }

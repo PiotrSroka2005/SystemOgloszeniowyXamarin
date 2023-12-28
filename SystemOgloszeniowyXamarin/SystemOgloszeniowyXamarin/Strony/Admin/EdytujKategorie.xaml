@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.EdytujKategorie" NavigationPage.HasNavigationBar="False">
+
+    <Frame CornerRadius="15" Padding="60" BorderColor="#222222"  Background="gray" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <StackLayout>
+            <Label Text="Nazwa kategorii:" HorizontalOptions="StartAndExpand" FontSize="20" VerticalOptions="StartAndExpand" Margin="20,20,0,0" />
+            <Entry x:Name="NameEntry" HorizontalOptions="StartAndExpand" FontSize="16" HeightRequest="55" VerticalOptions="StartAndExpand" Margin="20,5,20,0" WidthRequest="200" />
+
+            <Button x:Name="LoginButton" Text="Edytuj" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="160" VerticalOptions="Start" Margin="0,20,0,0" Clicked="EdytujKat" />
+
+            <Button Text="Zarządzanie kategoriami" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="160" VerticalOptions="Start" Margin="0,20,0,0" Clicked="ZarzadzajKategoriami" />
+        </StackLayout>
+    </Frame>
+</ContentPage>

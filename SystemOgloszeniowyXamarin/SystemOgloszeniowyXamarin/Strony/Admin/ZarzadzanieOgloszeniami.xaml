@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.ZarzadzanieOgloszeniami" NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                <Button Text="Dodaj" Clicked="Dodaj" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White"/>
+                <Button Text="Usuń" Clicked="Usun" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White"/>
+                <Button Text="Edytuj" Clicked="Edytuj" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White"/>
+                <Button Text="Panel admina" Clicked="PanelAdmina_Click" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White"/>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <ListView x:Name="listaOgloszenia" Margin="0,10,0,0">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Id" Grid.Column="0" />
+                        <Label Text="Tytul" Grid.Column="1" />
+                        <Label Text="Firma" Grid.Column="2" />
+                        <Label Text="kategoria" Grid.Column="3"  />
+                        <Label Text="Data" Grid.Column="4"  />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding OgloszenieId}" Grid.Column="0"/>
+                                <Label Text="{Binding Tytul}" Grid.Column="1"/>
+                                <Label Text="{Binding NazwaFirmy}" Grid.Column="2"/>
+                                <Label Text="{Binding KategoriaId}" Grid.Column="3"/>
+                                <Label Text="{Binding DataUtworzenia}" Grid.Column="4"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        
+        
+    </Grid>
+</ContentPage>

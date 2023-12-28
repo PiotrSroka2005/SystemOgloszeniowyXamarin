@@ -71,6 +71,11 @@ namespace SystemOgloszeniowyXamarin.Klasy
             return _database.Table<Uzytkownik>().ToList();
         }
 
+        public List<Ogloszenie> CzytajWszystkieOgloszenia()
+        {
+            return _database.Table<Ogloszenie>().ToList();
+        }
+
         public int DodajLubAktualizujUzytkownika(Uzytkownik uzytkownik)
         {
             if (uzytkownik.ID != 0)
@@ -185,6 +190,7 @@ namespace SystemOgloszeniowyXamarin.Klasy
             _database.Delete(firma);
         }
 
+       
         public void UtworzTabeleFirmy()
         {
             _database.CreateTable<Firma>();
@@ -232,5 +238,65 @@ namespace SystemOgloszeniowyXamarin.Klasy
         {
             _database.Delete<Aplikacja>(idOgloszenia);
         }
+
+
+        public Firma PobierzDaneOFirmie(int firmaId)
+        {
+            Firma firma = null;
+
+            using (var db = new SQLiteConnection(_database.DatabasePath))
+            {
+                firma = db.Table<Firma>().FirstOrDefault(f => f.FirmaId == firmaId);
+            }
+
+            return firma;
+        }
+       
+        public List<Ogloszenie> CzytajWyszukaneOgloszeniaKategoria(int wybranaKategoria)
+        {
+            return _database.Table<Ogloszenie>().Where(o => o.KategoriaId == wybranaKategoria).OrderByDescending(o => o.DataUtworzenia).ToList();
+        }
+
+        public List<Ogloszenie> CzytajWyszukaneOgloszenia(string szukana, int wybranaKategoria)
+        {
+            var query = _database.Table<Ogloszenie>().OrderByDescending(o => o.DataUtworzenia);
+
+            if (!string.IsNullOrEmpty(szukana))
+            {
+                query = query.Where(o => o.Tytul.Contains(szukana) || o.NazwaStanowiska.Contains(szukana) || o.NazwaFirmy.Contains(szukana));
+            }
+
+            if (wybranaKategoria > 0)
+            {
+                query = query.Where(o => o.KategoriaId == wybranaKategoria);
+            }
+
+            return query.ToList();
+        }
+
+        public List<Ogloszenie> CzytajWyszukaneOgloszeniaSzukana(string szukana)
+        {
+            var query = _database.Table<Ogloszenie>().OrderByDescending(o => o.DataUtworzenia);
+
+            if (!string.IsNullOrEmpty(szukana))
+            {                
+                query = query.Where(o =>
+                    o.Tytul.Contains(szukana) ||
+                    o.NazwaStanowiska.Contains(szukana) ||
+                    o.NazwaFirmy.Contains(szukana)
+                );
+            }
+
+            return query.ToList();
+        }
+
+
+        public Uzytkownik PobierzUzytkownika(string nick)
+        {
+            return _database.Table<Uzytkownik>().FirstOrDefault(u => u.Nick == nick);
+        }
+
+
+
     }
 }

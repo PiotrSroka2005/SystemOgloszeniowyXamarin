@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.ZarzadzanieFirma" NavigationPage.HasNavigationBar="False">
+    
+    <StackLayout>
+
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                <Button Text="Dodaj" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="Dodaj"/>
+                <Button Text="Usuń" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="Usun"/>
+                <Button Text="Edytuj" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="Edytuj" />
+                <Button Clicked="PanelAdmina_Click" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Text="Panel admina"></Button>
+            </StackLayout>
+        </StackLayout>
+        <ListView x:Name="listaFirmy">
+            <ListView.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="20,0,0,0" Text="Id" Grid.Column="0"  />
+                    <Label Text="Nazwa" Grid.Column="1" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Margin="20,0,0,0" Text="{Binding FirmaId}" Grid.Column="0" />
+                            <Label Text="{Binding FirmaNazwa}" Grid.Column="1"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOgloszeniowyXamarin.Strony.ProfilPage" NavigationPage.HasNavigationBar="False">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackLayout x:Name="MenuNavBar" Background="#222222" VerticalOptions="StartAndExpand" Orientation="Horizontal" Grid.Row="0">
+            <ImageButton Clicked="StronaGlowna_Clicked"  BackgroundColor="Transparent" Source="logoMoonWork.png" HorizontalOptions="CenterAndExpand" HeightRequest="50"  VerticalOptions="Center"/>
+            <Label  Text="MoonWork" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            <ImageButton Source="hamburger.png" HeightRequest="45" CornerRadius="10" WidthRequest="45" Margin="5" Padding="5" VerticalOptions="Center" Clicked="Menu_Clicked" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <StackLayout x:Name="Content" Grid.Row="1">
+            <ScrollView>
+                <StackLayout>
+                    <Label Text="Twoje aplikacje" TextColor="#222222" HorizontalOptions="Center" Margin="0,20,0,0" FontSize="25"/>
+                    <ListView x:Name="AplikacjaWidok" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame BorderColor="Cyan" BackgroundColor="#222222" CornerRadius="15" HasShadow="True" Margin="10,15,10,10">
+                                        <StackLayout Margin="10,0,10,0">
+                                            <Label Text="{Binding NazwaUzytkownika}" TextColor="White" FontSize="15" Margin="0,10,0,0"/>
+                                            <Label Text="{Binding EmailUzytkownika}" TextColor="White" FontSize="15" Margin="0,10,0,0"/>
+                                            <Label Text="{Binding TytulOgloszenia}" TextColor="White" Margin="0,10,0,0"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Id ogłoszenia: " TextColor="White" Margin="0,10,0,0"/>
+                                                <Label Text="{Binding IdOgloszenia}" TextColor="White" Margin="0,10,0,10"/>
+                                            </StackLayout>
+                                            <Button Clicked="Usun_Click" Text="Usuń" HorizontalOptions="End" Margin="0,0,0,10" BackgroundColor="#222222" BorderColor="White" BorderWidth="1" TextTransform="None" CornerRadius="15" TextColor="White"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+        <StackLayout x:Name="Menu" Grid.Row="1" BackgroundColor="#222222">
+            <Line BackgroundColor="White" HeightRequest="0.5"/>
+            <Label x:Name="uzytkownik" Text="Użytkownik" TextColor="White" Margin="15,10,0,10"/>
+            <Line x:Name="LiniaUser" BackgroundColor="White" HeightRequest="0.5"/>
+            <Button Text="Strona główna" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="StronaGlowna_Clicked" Background="Transparent" TextColor="White"/>
+            <Button x:Name="PanelAdm" Text="Panel admina" TextTransform="None" Clicked="PanelAdmina_Click" HorizontalOptions="StartAndExpand"  Background="Transparent" TextColor="White"/>
+            <Line BackgroundColor="White" HeightRequest="0.5"/>
+            <Button x:Name="Zal" Text="Zaloguj się" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="ZalogujSie_Click" Background="Transparent" TextColor="White" />
+            <Button x:Name="Wyl" Text="Wyloguj się" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="WylogujSie_Click" Background="Transparent" TextColor="White" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

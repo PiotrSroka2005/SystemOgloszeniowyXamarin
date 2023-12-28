@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOgloszeniowyXamarin.Strony.SzczegolyOgloszenia" NavigationPage.HasNavigationBar="False">
+
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackLayout x:Name="MenuNavBar" Background="#222222" VerticalOptions="StartAndExpand" Orientation="Horizontal" Grid.Row="0">
+            <ImageButton  Clicked="StronaGlowna_Clicked" BackgroundColor="Transparent" Source="logoMoonWork.png" HorizontalOptions="CenterAndExpand" HeightRequest="50"  VerticalOptions="Center"/>
+            <Label  Text="MoonWork" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            <ImageButton Source="hamburger.png" HeightRequest="45" CornerRadius="10" WidthRequest="45" Margin="5" Padding="5" VerticalOptions="Center" Clicked="Menu_Clicked" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <StackLayout x:Name="Content" Grid.Row="1">
+            <ScrollView>
+                <StackLayout>
+                    <ListView x:Name="ListaOgloszenia" HasUnevenRows="True" Margin="0,0,0,0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Frame BorderColor="Cyan"  BackgroundColor="#222222" Margin="10,5,10,0" CornerRadius="5">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="{Binding Zdjecie}" HorizontalOptions="Start" WidthRequest="50" HeightRequest="50" Margin="10,10,10,10"/>
+                                                <StackLayout>
+                                                    <Label TextColor="White" FontSize="25" Margin="10,0,0,0" Text="{Binding Tytul}"/>
+                                                    <Label Text="{Binding NazwaFirmy}" TextColor="White" FontSize="15" Margin="10,10,0,0"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame BorderColor="Cyan"  BackgroundColor="#222222" Margin="10,5,10,0" CornerRadius="5">
+                                            <StackLayout Margin="10,10,0,10">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Frame BorderColor="Cyan" BackgroundColor="White" CornerRadius="5">
+                                                        <StackLayout WidthRequest="30" HeightRequest="30">
+                                                            <Image Source="waznosc.png"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                    <Label Text="{Binding DataWaznosci, StringFormat='Ważne do: {0:dd.MM.yyyy}'}" VerticalOptions="Center" TextColor="White" Margin="5,0,0,0"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                                                    <Frame BorderColor="Cyan" BackgroundColor="White" CornerRadius="5">
+                                                        <StackLayout WidthRequest="30" HeightRequest="30">
+                                                            <Image Source="umowa.png"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                    <Label Text="{Binding RodzajUmowy}" TextColor="White" VerticalOptions="Center" Margin="5,0,0,0"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                                                    <Frame BorderColor="Cyan" BackgroundColor="White" CornerRadius="5">
+                                                        <StackLayout WidthRequest="30" HeightRequest="30">
+                                                            <Image Source="stanowisko.png"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding NazwaStanowiska}" TextColor="White" Margin="5,0,0,0" VerticalOptions="Center"/>
+                                                        <Label Text="-" TextColor="White" VerticalOptions="Center"/>
+                                                        <Label Text="{Binding PoziomStanowiska}" TextColor="White" VerticalOptions="Center"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                                                    <Frame BorderColor="Cyan" BackgroundColor="White" CornerRadius="5">
+                                                        <StackLayout WidthRequest="30" HeightRequest="30">
+                                                            <Image Source="money.png"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding NajmniejszeWynagrodzenie}" TextColor="White" Margin="5,0,0,0" VerticalOptions="Center"/>
+                                                        <Label Text="-" TextColor="White" VerticalOptions="Center"/>
+                                                        <Label Text="{Binding NajwiekszeWynagrodzenie}" TextColor="White" VerticalOptions="Center"/>
+                                                        <Label Text=" zł/ mies" TextColor="White" VerticalOptions="Center"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                                                    <Frame BorderColor="Cyan"  BackgroundColor="White" CornerRadius="5">
+                                                        <StackLayout WidthRequest="30" HeightRequest="30">
+                                                            <Image Source="czasPracy.png"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                    <Label Text="{Binding WymiarZatrudnienia}" VerticalOptions="Center" TextColor="White" Margin="5,0,0,0"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                                                    <Frame BorderColor="Cyan" BackgroundColor="White" CornerRadius="5">
+                                                        <StackLayout WidthRequest="30" HeightRequest="30">
+                                                            <Image Source="miejscePracy.png"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                    <Label Text="{Binding RodzajPracy}" VerticalOptions="Center" TextColor="White" Margin="5,0,0,0"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame BorderColor="Cyan" BackgroundColor="#222222" Margin="10,5,10,0" CornerRadius="5">
+                                            <StackLayout>
+                                                <Label Text="Twój zakres obowiązków" TextColor="White" FontSize="25"/>
+                                                <Label Text="{Binding Obowiazki}" TextColor="White" HorizontalOptions="Start" Margin="10,20,0,10" />
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame BorderColor="Cyan" BackgroundColor="#222222" Margin="10,5,10,0" CornerRadius="5">
+                                            <StackLayout>
+                                                <Label Text="Nasze wymagania" TextColor="White" FontSize="25"/>
+                                                <Label Text="{Binding Wymagania}" TextColor="White" HorizontalOptions="Start" Margin="10,20,0,10" />
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame BorderColor="Cyan" BackgroundColor="#222222" Margin="10,5,10,0" CornerRadius="5">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding NazwaFirmy}" TextColor="White" Margin="5,0,0,0" FontSize="20" VerticalOptions="Center"/>
+                                                <Label Text="{Binding Informacje}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="10,10,0,10" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button x:Name="Aplikowanie" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="Aplikuj_Click" Text="Aplikuj" Margin="10,0,10,10" FontSize="20" WidthRequest="90"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+        <StackLayout x:Name="Menu" Grid.Row="1" BackgroundColor="#222222">
+            <Line BackgroundColor="White" HeightRequest="0.5"/>
+            <Label x:Name="uzytkownik" Text="Użytkownik" TextColor="White" Margin="15,10,0,10"/>
+            <Line x:Name="LiniaUser" BackgroundColor="White" HeightRequest="0.5"/>
+            <Button Text="Strona główna" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="StronaGlowna_Clicked" Background="Transparent" TextColor="White"/>
+            <Button x:Name="profil" Text="Profil" Margin="-10,0,0,0" Clicked="Profil_Click" TextTransform="None" HorizontalOptions="StartAndExpand" Background="Transparent" TextColor="White"/>
+            <Button x:Name="PanelAdm" Text="Panel admina" TextTransform="None" Clicked="PanelAdmina_Click" HorizontalOptions="StartAndExpand"  Background="Transparent" TextColor="White"/>
+            <Line BackgroundColor="White" HeightRequest="0.5"/>
+            <Button x:Name="Zal" Text="Zaloguj się" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="ZalogujSie_Click" Background="Transparent" TextColor="White" />
+            <Button x:Name="Wyl" Text="Wyloguj się" TextTransform="None" HorizontalOptions="StartAndExpand" Clicked="WylogujSie_Click" Background="Transparent" TextColor="White" />
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

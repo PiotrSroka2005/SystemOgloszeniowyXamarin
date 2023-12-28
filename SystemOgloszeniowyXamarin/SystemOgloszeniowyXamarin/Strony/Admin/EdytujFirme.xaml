@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.EdytujFirme" NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <Frame CornerRadius="15" Padding="60" BorderColor="#222222"  Background="gray" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <StackLayout>
+                <Label Text="Nazwa firmy:" FontSize="20" Margin="20,20,0,0" />
+                <Entry x:Name="NameEntry" FontSize="16" HeightRequest="55" Margin="20,5,20,0" WidthRequest="200" />
+
+                <Button x:Name="LoginButton" Text="Edytuj" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" WidthRequest="160" Margin="0,20,0,0" Clicked="EdytujFirm" />
+                <Button Text="Zarządzanie firmą" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" WidthRequest="160" Margin="0,20,0,0" Clicked="ZarzadzajFirmami" />
+            </StackLayout>
+
+        </Frame>
+    </ScrollView>
+</ContentPage>
