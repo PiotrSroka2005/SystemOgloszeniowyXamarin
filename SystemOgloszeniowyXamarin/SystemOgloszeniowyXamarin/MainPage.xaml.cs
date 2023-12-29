@@ -167,11 +167,6 @@ namespace SystemOgloszeniowyXamarin
             }
         }
 
-        private void ImageButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         private void Szukaj_Clicked(object sender, EventArgs e)
         {
             string Szukana = searchBar.Text;
@@ -200,9 +195,5 @@ namespace SystemOgloszeniowyXamarin
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }

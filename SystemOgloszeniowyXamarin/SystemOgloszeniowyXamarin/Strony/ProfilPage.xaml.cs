@@ -27,19 +27,19 @@ namespace SystemOgloszeniowyXamarin.Strony
             logged = log;
 
             Menu.IsVisible = false;            
-            PanelAdm.IsVisible = false;
+            PanelAdm.IsVisible = false;            
 
             if (logged == false)
             {
                 Wyl.IsVisible = false;
                 uzytkownik.IsVisible = false;
-                LiniaUser.IsVisible = false;               
+                LiniaUser.IsVisible = false;                
             }
             else
             {
                 uzytkownik.Text = user;
                 LiniaUser.IsVisible = true;
-                Zal.IsVisible = false;
+                Zal.IsVisible = false;                
                 if (admin == 1)
                 {
                     PanelAdm.IsVisible = true;
@@ -64,12 +64,9 @@ namespace SystemOgloszeniowyXamarin.Strony
                 if (aplikacja != null)
                 {
                     App.Baza.UsunAplikacje(aplikacja.IdOgloszenia, aplikacja.NazwaUzytkownika);
-
-                    if(aplikacje != null)
-                    {
-                        AplikacjaWidok.ItemsSource = App.Baza.PobierzAplikacjeUzytkownika(usermn);
-                        AplikacjaWidok.BindingContext = App.Baza.PobierzAplikacjeUzytkownika(usermn);
-                    }
+                    aplikacje.Remove(aplikacja);
+                    AplikacjaWidok.ItemsSource = null;
+                    AplikacjaWidok.ItemsSource = aplikacje;
                 }
             }
         }

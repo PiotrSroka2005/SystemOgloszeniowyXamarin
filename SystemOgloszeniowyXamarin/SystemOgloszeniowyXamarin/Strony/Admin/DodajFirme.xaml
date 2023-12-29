@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.DodajFirme" NavigationPage.HasNavigationBar="False">
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.DodajFirme" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
 
     <ScrollView>
         <Frame CornerRadius="15" Padding="60" BorderColor="#222222"  Background="gray" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <StackLayout>
-                <Label Text="Nazwa firmy:" HorizontalOptions="Start" FontSize="20" VerticalOptions="StartAndExpand" Margin="20,20,0,0" />
-                <Entry x:Name="NameEntry" HorizontalOptions="StartAndExpand" FontSize="16" HeightRequest="55" VerticalOptions="StartAndExpand" Margin="20,5,20,0" WidthRequest="200" />
+                <Label Text="Nazwa firmy:" HorizontalOptions="Start" TextColor="#222222" FontSize="20" VerticalOptions="StartAndExpand" Margin="20,20,0,0" />
+                <Entry x:Name="NameEntry" HorizontalOptions="StartAndExpand" TextColor="#222222" FontSize="16" HeightRequest="55" VerticalOptions="StartAndExpand" Margin="20,5,20,0" WidthRequest="200" />
 
                 <Button x:Name="LoginButton" Text="Dodaj" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" WidthRequest="160" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,20,0,0" Clicked="DodajFirm" />
                 <Button Text="Zarządzanie firmą" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" WidthRequest="160" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,20,0,0" Clicked="ZarzadzajFirmami" />

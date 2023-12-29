@@ -29,9 +29,10 @@ namespace SystemOgloszeniowyXamarin.Strony
             App.Baza.UtworzTabeleOgloszenia();
 
             Menu.IsVisible = false;
-            PanelAdm.IsVisible = false;
+            PanelAdm.IsVisible = false;            
             if (logged == false)
             {
+                Aplikowanie.IsVisible = false;
                 Wyl.IsVisible = false;
                 uzytkownik.IsVisible = false;
                 LiniaUser.IsVisible = false;
@@ -41,6 +42,7 @@ namespace SystemOgloszeniowyXamarin.Strony
             {
                 uzytkownik.Text = user;
                 LiniaUser.IsVisible = true;
+                Aplikowanie.IsVisible = true;
                 Zal.IsVisible = false;
                 if (admin == 1)
                 {
@@ -60,6 +62,8 @@ namespace SystemOgloszeniowyXamarin.Strony
         public SzczegolyOgloszenia(int IdOgloszenia)
         {
             InitializeComponent();
+
+            Aplikowanie.IsVisible = false;
 
             App.Baza.UtworzTabeleOgloszenia();
             Menu.IsVisible = false;

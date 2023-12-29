@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SystemOgloszeniowyXamarin.MainPage" NavigationPage.HasNavigationBar="False">
+             x:Class="SystemOgloszeniowyXamarin.MainPage" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
 
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -13,7 +13,7 @@
             <StackLayout x:Name="MenuNavBar" Background="#222222" VerticalOptions="StartAndExpand" Orientation="Horizontal" Grid.Row="0">
                 <Image  Source="logoMoonWork.png" HorizontalOptions="CenterAndExpand" HeightRequest="50"  VerticalOptions="Center"/>
                 <Label  Text="MoonWork" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                <ImageButton Source="hamburger.png" HeightRequest="45" CornerRadius="10" WidthRequest="45" Margin="5" Padding="5" VerticalOptions="Center" Clicked="Menu_Clicked" HorizontalOptions="EndAndExpand"/>
+                <ImageButton Source="hamburger.png" CornerRadius="10" WidthRequest="40" HeightRequest="40" BackgroundColor="White" Margin="5" Padding="4" VerticalOptions="Center" Clicked="Menu_Clicked" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
            
             <StackLayout x:Name="Content" Grid.Row="1">
@@ -28,11 +28,11 @@
                     <Frame Margin="10,20,10,0" CornerRadius="15" Padding="10" BackgroundColor="Gray" HasShadow="True">
                         <StackLayout>
 
-                            <SearchBar x:Name="searchBar" PlaceholderColor="#222222" Placeholder="Szukaj stanowisko, tytuł, firma:" FontSize="20" Margin="-20,0,0,0" />
+                            <SearchBar x:Name="searchBar" TextColor="#222222" PlaceholderColor="#222222" Placeholder="Szukaj stanowisko, tytuł, firma:" FontSize="20" Margin="-20,0,0,0" />
 
-                            <Picker x:Name="KategoriaPicker" TitleColor="#222222" Margin="20,0,0,0"  Title="Kategorie" FontSize="18" />
+                            <Picker x:Name="KategoriaPicker" TextColor="#222222" TitleColor="#222222" Margin="20,0,0,0"  Title="Kategorie" FontSize="18" />
 
-                            <Button Text="Szukaj" TextTransform="None" Clicked="Szukaj_Clicked" CornerRadius="35" BackgroundColor="#222222" TextColor="White" FontSize="16"/>
+                            <Button Text="Szukaj" TextTransform="None" Clicked="Szukaj_Clicked" CornerRadius="35" BackgroundColor="#222222"  FontSize="16"/>
                         </StackLayout>
                     </Frame>
 

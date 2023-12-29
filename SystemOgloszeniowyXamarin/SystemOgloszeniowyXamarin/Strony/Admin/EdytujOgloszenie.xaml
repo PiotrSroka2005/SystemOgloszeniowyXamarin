@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.EdytujOgloszenie" NavigationPage.HasNavigationBar="False">
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.EdytujOgloszenie" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
 
 
     <ScrollView>
@@ -30,61 +30,61 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Text="Tytul:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="0" x:Name="TxBTytul" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="0" Text="Tytul:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="0" x:Name="TxBTytul" FontSize="16" TextColor="#222222" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="1" Text="Nazwa stanowiska:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="1" x:Name="TxBNazwaStanowiska" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="1" Text="Nazwa stanowiska:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="1" x:Name="TxBNazwaStanowiska" FontSize="16" TextColor="#222222" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="2" Text="Poziom stanowiska:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="2" x:Name="TxBPoziomStanowiska" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="2" Text="Poziom stanowiska:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="2" x:Name="TxBPoziomStanowiska" FontSize="16" TextColor="#222222"  HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="3" Text="Rodzaj pracy:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="3" x:Name="TxBRodzajPracy" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="3" Text="Rodzaj pracy:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="3" x:Name="TxBRodzajPracy" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="4" Text="Wymiar zatrudnienia:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="4" x:Name="TxBWymiarZatrudnienia" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="4" Text="Wymiar zatrudnienia:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="4" x:Name="TxBWymiarZatrudnienia" FontSize="16" TextColor="#222222" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="5" Text="Rodzaj umowy:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="5" x:Name="TxBRodzajUmowy" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="5" Text="Rodzaj umowy:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="5" x:Name="TxBRodzajUmowy" FontSize="16" TextColor="#222222" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="6" Text="Najmn wynagrodz:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="6" x:Name="TxBNajmniejszeWynagrodzenie" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="6" Text="Najmn wynagrodz:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="6" x:Name="TxBNajmniejszeWynagrodzenie" FontSize="16" TextColor="#222222" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="7" Text="Najw wynagrodz:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="7" x:Name="TxBNajwiekszeWynagrodzenie" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="7" Text="Najw wynagrodz:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="7" x:Name="TxBNajwiekszeWynagrodzenie" TextColor="#222222" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="8" Text="Dni pracy:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="8" x:Name="TxBDniPracy" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="8" Text="Dni pracy:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="8" x:Name="TxBDniPracy" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="9" Text="Godziny pracy:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="9" x:Name="TxBGodzinyPracy" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="9" Text="Godziny pracy:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="9" x:Name="TxBGodzinyPracy" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="10" Text="Data ważności:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <DatePicker Grid.Row="10" x:Name="TxBDataWaznosci" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="10" Text="Data ważności:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <DatePicker Grid.Row="10" x:Name="TxBDataWaznosci" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="11" Text="Obowiązki:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="11" x:Name="TxBObowiazki" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="11" Text="Obowiązki:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="11" x:Name="TxBObowiazki" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="12" Text="Wymagania:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="12" x:Name="TxBWymagania" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="12" Text="Wymagania:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="12" x:Name="TxBWymagania" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="13" Text="Benefity:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="13" x:Name="TxBBenefity" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="13" Text="Benefity:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="13" x:Name="TxBBenefity" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="14" Text="Informacje:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="14" x:Name="TxBInformacje" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="14" Text="Informacje:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="14" x:Name="TxBInformacje" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="15" Text="Zdjęcie:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Entry Grid.Row="15" x:Name="TxBZdjecie" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="15" Text="Zdjęcie:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Entry Grid.Row="15" x:Name="TxBZdjecie" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="16" Text="Firma:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Picker Grid.Row="16" x:Name="FirmaComboBox" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="16" Text="Firma:"  TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Picker Grid.Row="16" x:Name="FirmaComboBox" FontSize="16" HeightRequest="55" TextColor="#222222" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Label Grid.Row="17" Text="Kategoria:" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
-                <Picker Grid.Row="17" x:Name="KategoriaComboBox" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
+                <Label Grid.Row="17" Text="Kategoria:" TextColor="#222222" FontSize="14" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Picker Grid.Row="17" x:Name="KategoriaComboBox" TextColor="#222222" FontSize="16" HeightRequest="55" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" />
 
-                <Button Grid.Row="18" x:Name="Edytuj" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="Edytuj_Click" Text="Edytuj" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="Start"  />
+                <Button Grid.Row="18" x:Name="Edytuj"  CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="Edytuj_Click" Text="Edytuj" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="Start"  />
 
                 <Button Grid.Row="19" Text="Zarządzaj ogłoszeniami" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="ZarzadzajOgloszeniami" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="Start" />
             </Grid>

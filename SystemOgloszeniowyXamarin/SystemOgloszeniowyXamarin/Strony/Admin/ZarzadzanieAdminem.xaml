@@ -1,12 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.ZarzadzanieAdminem" NavigationPage.HasNavigationBar="False">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.ZarzadzanieAdminem" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
+
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="Daj admina" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="GiveAdmin_Btn" />
+            <Button Text="Odbierz admina" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="RemoveAdmin_Btn" />
+            <Button Text="Panel admina" CornerRadius="35" TextTransform="None" BackgroundColor="#222222" TextColor="White" Clicked="PanelAdmina_Click" />
         </StackLayout>
-    </ContentPage.Content>
+        <ScrollView>
+            <ListView x:Name="personsListView" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0,10,0,0">
+                                <Line BackgroundColor="#222222" WidthRequest="100"/>
+                                <Label Text="{Binding Nick}" TextColor="#222222" />
+                                <Label Text="{Binding Administrator}" TextColor="#222222"/>
+                                <Line BackgroundColor="#222222" WidthRequest="100"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>

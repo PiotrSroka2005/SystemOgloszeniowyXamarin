@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.ZarzadzanieKategoria" NavigationPage.HasNavigationBar="False">
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.ZarzadzanieKategoria" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
 
     <StackLayout>
         <StackLayout>
@@ -21,8 +21,8 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Label Margin="20,0,0,0" Text="Id" Grid.Column="0" />
-                        <Label Text="Nazwa" Grid.Column="1" />
+                        <Label Margin="20,0,0,0" Text="Id" Grid.Column="0" TextColor="#222222"/>
+                        <Label Text="Nazwa" Grid.Column="1" TextColor="#222222" />
                     </Grid>
                 </ListView.Header>
                 <ListView.ItemTemplate>
@@ -33,8 +33,8 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Margin="20,0,0,0" Text="{Binding KategoriaId}" Grid.Column="0"/>
-                                <Label Text="{Binding KategoriaNazwa}" Grid.Column="1"/>
+                                <Label Margin="20,0,0,0" Text="{Binding KategoriaId}" Grid.Column="0" TextColor="#222222"/>
+                                <Label Text="{Binding KategoriaNazwa}" Grid.Column="1" TextColor="#222222"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

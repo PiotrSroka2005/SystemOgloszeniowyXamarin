@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.ZarzadzanieOgloszeniami" NavigationPage.HasNavigationBar="False">
+             x:Class="SystemOgloszeniowyXamarin.Strony.Admin.ZarzadzanieOgloszeniami" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -28,11 +28,11 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Label Text="Id" Grid.Column="0" />
-                        <Label Text="Tytul" Grid.Column="1" />
-                        <Label Text="Firma" Grid.Column="2" />
-                        <Label Text="kategoria" Grid.Column="3"  />
-                        <Label Text="Data" Grid.Column="4"  />
+                        <Label Text="Id" Grid.Column="0" TextColor="#222222" />
+                        <Label Text="Tytul" Grid.Column="1" TextColor="#222222"/>
+                        <Label Text="Firma" Grid.Column="2" TextColor="#222222"/>
+                        <Label Text="kategoria" Grid.Column="3" TextColor="#222222"  />
+                        <Label Text="Data" Grid.Column="4" TextColor="#222222" />
                     </Grid>
                 </ListView.Header>
                 <ListView.ItemTemplate>
@@ -46,11 +46,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding OgloszenieId}" Grid.Column="0"/>
-                                <Label Text="{Binding Tytul}" Grid.Column="1"/>
-                                <Label Text="{Binding NazwaFirmy}" Grid.Column="2"/>
-                                <Label Text="{Binding KategoriaId}" Grid.Column="3"/>
-                                <Label Text="{Binding DataUtworzenia}" Grid.Column="4"/>
+                                <Label Text="{Binding OgloszenieId}" TextColor="#222222" Grid.Column="0"/>
+                                <Label Text="{Binding Tytul}" Grid.Column="1" TextColor="#222222"/>
+                                <Label Text="{Binding NazwaFirmy}" Grid.Column="2" TextColor="#222222"/>
+                                <Label Text="{Binding KategoriaId}" Grid.Column="3" TextColor="#222222"/>
+                                <Label Text="{Binding DataUtworzenia}" Grid.Column="4" TextColor="#222222"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

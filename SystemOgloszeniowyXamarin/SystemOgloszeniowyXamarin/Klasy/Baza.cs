@@ -234,11 +234,16 @@ namespace SystemOgloszeniowyXamarin.Klasy
             return count > 0;
         }
 
+
         public void UsunAplikacje(int idOgloszenia, string nazwaUzytkownika)
         {
-            _database.Delete<Aplikacja>(idOgloszenia);
-        }
+            var aplikacjeToDelete = _database.Table<Aplikacja>().Where(a => a.IdOgloszenia == idOgloszenia && a.NazwaUzytkownika == nazwaUzytkownika).ToList();
 
+            foreach (var aplikacja in aplikacjeToDelete)
+            {
+                _database.Delete(aplikacja);
+            }
+        }
 
         public Firma PobierzDaneOFirmie(int firmaId)
         {
